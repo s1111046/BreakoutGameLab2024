@@ -13,18 +13,19 @@ namespace BreakoutGameLab001
         private Timer timer = new Timer();
 
         public CustomizedPanel(int width, int height)
-        { 
+        {
             // this.DoubleBuffered = true;
-            this.BackColor = Color.Yellow; 
+            this.BackColor = Color.Yellow;
             this.Size = new Size(width, height);
         }
-        //
-        public void Initialize() { 
+
+        public void Initialize()
+        {
             // Timer : 每 20 毫秒觸發一次 Timer_Tick 事件 ==> 更新遊戲畫面
             // 也可以利用 Thread 類別來實現 類似的功能!!
-            // timer.Interval = 20;
-            // timer.Tick += Timer_Tick;
-            // timer.Start();
+            timer.Interval = 20;
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -34,7 +35,6 @@ namespace BreakoutGameLab001
 
             // 要求遊戲畫面重繪
             Invalidate(); // --> 觸發 OnPaint 事件
-            //
         }
 
         // 處理畫面的重繪事件
@@ -48,7 +48,6 @@ namespace BreakoutGameLab001
 
             // 繪製遊戲畫面
             gr.FillEllipse(new SolidBrush(Color.Red), 100, 100, 50, 50);
-            
         }
     }
 }

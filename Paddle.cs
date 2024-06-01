@@ -20,10 +20,27 @@
             Color = color;
         }
 
-        // 加入其他方法
-
         // 繪製擋板
+        internal void Draw(Graphics gr)
+        {
+            gr.FillRectangle(new SolidBrush(Color.Blue), X, Y, Width, Height);
+        }
 
-        // TODO: 左右移動擋板
+        // 左右移動擋板，并確保擋板不會超出遊戲區域
+        public void Move(int vx, int gameWidth)
+        {
+            X += vx;
+
+            // 確保擋板不會超出遊戲區域的左邊界
+            if (X < 0)
+            {
+                X = 0;
+            }
+            // 確保擋板不會超出遊戲區域的右邊界
+            else if (X + Width > gameWidth)
+            {
+                X = gameWidth - Width;
+            }
+        }
     }
 }
